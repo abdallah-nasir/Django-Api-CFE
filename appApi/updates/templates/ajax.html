@@ -1,11 +1,14 @@
 {% extends "base.html" %}
-{% comment "template_location" %}
-    'forms/ajax.html'
-{% endcomment %}
+
+
 {% block content %}
-    <form class='my-ajax-form' method='POST' action='.' data-url='{{ request.build_absolute_uri|safe }}'>
+<div class="mt-3">
+    <div id="alert-box"></div>
+    <div id="img-box"></div>
+    <form id="p-form" autocomplete="off">
         {% csrf_token %}
-        {{form.as_p|safe}}
-        <button type='submit'>Submit</button>
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Send</button>
     </form>
+</div>
 {% endblock content %}

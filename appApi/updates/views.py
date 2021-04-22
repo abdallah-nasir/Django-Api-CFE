@@ -68,21 +68,15 @@ from django.http import JsonResponse
 #             return response
 
 def JoinFormView(request):
-    form=JoinForm(request.POST or None)
+    form=JoinForm(request.POST or None,request.FILES or None)
     if request.is_ajax():
-        if form.is_valid():
-            print(form.cleaned_data)
-            data = {
+        Update.objects.create(user=request.user,content="asdasd")
+        data = {
                 'message': "Successfully submitted form data."
-            }
-            return JsonResponse(data)
+        }
+        return JsonResponse(data)
     context={"form":form}
     return render(request,"ajax.html",context)
-
-
-
-
-
 
 
 
